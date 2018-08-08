@@ -1,0 +1,110 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/8/2018 1:54:05 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="FDSBC34950"
+  DTS:CreatorName="DIREITOSBC\leonardo.tripletech"
+  DTS:DTSID="{4C1F439A-9245-4555-8811-8C9CE019CCA7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.107"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{62B8FA2F-08CB-4B8B-A719-FBA8739DBDAA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{740B2330-9254-44A4-BB70-AEEA94AB0F20}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;from=\&quot;&quot; + @[User::Source] + &quot;\&quot; &quot; +&#xA;&quot;to=\&quot;&quot; +  @[User::Destination] + &quot;\&quot; &quot; +&#xA;&quot;with-template=\&quot;&quot; +  @[User::Template] + &quot;\&quot;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Arguments">
+      <DTS:VariableValue
+        DTS:DataType="8">from="C:\Users\leonardo.tripletech\Downloads\SP2_RM\SP2-RM\Amostra_Pessoas_35_RMSP.txt" to="C:\Users\leonardo.tripletech\Downloads\SP2_RM\SP2-RM\output.txt" with-template="C:\Users\leonardo.tripletech\Downloads\SP2_RM\SP2-RM\template.txt"</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8B27BE99-952E-4824-8A3C-DBEF86B027BE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Destination">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\leonardo.tripletech\Downloads\SP2_RM\SP2-RM\output.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D1092F7D-2117-46D0-9329-C72BA924D70B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Executable">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\leonardo.tripletech\source\repos\workforce\src\FixedWidthExtractor\bin\Release\win-x64\publish\fixed-width-extractor.exe</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CA7A5C6D-C604-4AEB-9582-797226370271}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Source">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\leonardo.tripletech\Downloads\SP2_RM\SP2-RM\Amostra_Pessoas_35_RMSP.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{38AF1085-D72F-4376-B5BE-F046EEA0BED3}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Template">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\leonardo.tripletech\Downloads\SP2_RM\SP2-RM\template.txt</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute Process Task"
+      DTS:CreationName="Microsoft.ExecuteProcess"
+      DTS:Description="Execute Process Task"
+      DTS:DTSID="{E079C028-9FF3-4252-B86B-52BAD11A18CA}"
+      DTS:ExecutableType="Microsoft.ExecuteProcess"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Process Task"
+      DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="Arguments">@[User::Arguments]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Executable">@[User::Executable]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <ExecuteProcessData
+          Executable="C:\Users\leonardo.tripletech\source\repos\workforce\src\FixedWidthExtractor\bin\Release\win-x64\publish\fixed-width-extractor.exe"
+          Arguments="from=&quot;C:\Users\leonardo.tripletech\Downloads\SP2_RM\SP2-RM\Amostra_Pessoas_35_RMSP.txt&quot; to=&quot;C:\Users\leonardo.tripletech\Downloads\SP2_RM\SP2-RM\output.txt&quot; with-template=&quot;C:\Users\leonardo.tripletech\Downloads\SP2_RM\SP2-RM\template.txt&quot;" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Execute Process Task"
+          TopLeft="158,73" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
