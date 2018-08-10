@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
@@ -6,11 +7,12 @@ namespace Workforce.FixedWidthExtractor
 {
     public class DataFlow
     {
-        private const char separator = ',';
+        private const char separator = ';';
 
         private readonly string sourcePath;
         private readonly string destinationPath;
         private readonly List<(int, int, string)> template;
+        private readonly Encoding encoding;
 
         public DataFlow(
             string sourcePath,
@@ -20,13 +22,14 @@ namespace Workforce.FixedWidthExtractor
             this.sourcePath = sourcePath;
             this.destinationPath = destinationPath;
             this.template = template;
+            encoding = Encoding.GetEncoding(1252);
         }
 
         public void Run()
         {
-            using (var reader = new StreamReader(sourcePath))
+            using (var reader = new StreamReader(sourcePath, encoding))
             {
-                using (var writer = new StreamWriter(destinationPath))
+                using (var writer = new StreamWriter(destinationPath, false, encoding))
                 {
                     writer.WriteLine(GetTemplateHeading());
 
@@ -69,7 +72,12 @@ namespace Workforce.FixedWidthExtractor
                 if (!first)
                     builder.Append(separator);
 
-                builder.Append(field.Item3);
+                builder.Append(
+                    field.Item3
+                        .RemoveDiacritics()
+                        .ToPascalCase()
+                        .RemoveNonAlphanumericCharacters()
+                    );
                 first = false;
             }
 

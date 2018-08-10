@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Workforce.FixedWidthExtractor
 {
@@ -6,6 +7,8 @@ namespace Workforce.FixedWidthExtractor
     {
         static void Main(string[] args)
         {
+            RegisterServices();
+
             var arguments = new Arguments(args);
 
             if (arguments.AreInvalid())
@@ -19,6 +22,11 @@ namespace Workforce.FixedWidthExtractor
                 template);
 
             dataFlow.Run();
+        }
+
+        static void RegisterServices()
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         }
     }
 }
